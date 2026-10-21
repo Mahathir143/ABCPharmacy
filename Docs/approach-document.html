@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Approach Document - ABC Pharmacy (.NET Core + React.js)</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #0284c7;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --card-bg: #ffffff;
+      --danger: #dc2626;
+      --warning: #d97706;
+      --success: #16a34a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .header-content { max-width: 1100px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav.doc-nav {
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    nav.doc-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+    }
+    nav.doc-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    nav.doc-nav a:hover, nav.doc-nav a.active {
+      color: var(--primary);
+      background-color: #ccfbf1;
+      font-weight: 600;
+    }
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 1.2rem; border-bottom: 2px solid #e6fffa; padding-bottom: 0.4rem; }
+    h3 { font-size: 1.15rem; color: var(--text-main); margin: 1.2rem 0 0.5rem 0; font-weight: 600; }
+    p { margin-bottom: 1rem; color: #334155; }
+    ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; color: #334155; }
+    li { margin-bottom: 0.4rem; }
+    .table-responsive { overflow-x: auto; margin: 1rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border: 1px solid var(--border-color); }
+    th { background: #f1f5f9; color: #475569; font-weight: 600; }
+    tr:nth-child(even) { background-color: #f8fafc; }
+    .callout {
+      border-left: 4px solid var(--primary);
+      background: #f0fdfa;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.2rem 0;
+    }
+    .callout.danger { border-left-color: var(--danger); background: #fef2f2; }
+    .callout.warning { border-left-color: var(--warning); background: #fffbeb; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1rem 0; }
+    .mini-card {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      background: #fafafa;
+    }
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <span class="badge">Assessment Engineering Artifact &bull; .NET + React Stack</span>
+      <h1>System Architecture &amp; Approach Document</h1>
+      <p style="color: #e6fffa; margin-bottom: 0;">Client ABC Pharmacy - Medicine &amp; Sales Management Single Page Application (.NET 8 Web API + React 18)</p>
+    </div>
+  </header>
+
+  <nav class="doc-nav">
+    <ul>
+      <li><a href="index.html">📋 Overview Hub</a></li>
+      <li><a href="approach-document.html" class="active">📐 Approach Document</a></li>
+      <li><a href="developer-document.html">💻 Developer Document</a></li>
+      <li><a href="unit-test-document.html">🧪 Unit Test Document</a></li>
+      <li><a href="implementation-document.html">⚙️ Implementation Document</a></li>
+      <li><a href="interview-preparation-document.html">🎯 Interview Prep Document</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- 1. Executive Summary & Objective -->
+    <div class="section-card">
+      <h2>1. Executive Summary &amp; Objective</h2>
+      <p>
+        This document details the architectural and implementation strategy devised for <strong>Client ABC Pharmacy</strong>. As a <strong>.NET Core and React.js Full Stack Developer</strong>, the objective was to craft a robust, production-ready Single Page Application (SPA) pairing an ASP.NET Core 8 Web API backend with a dynamic, component-driven <strong>React 18</strong> user interface, featuring server-side JSON persistence.
+      </p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <strong style="color: var(--primary);">Key Deliverables:</strong>
+          <ul>
+            <li>Full inventory tracking with designated business attributes.</li>
+            <li>Grid visualization with conditional color coding (Red for &lt; 30d expiry, Yellow for &lt; 10 units stock).</li>
+            <li>Real-time search filtering on medicine name and brand via React <code>useMemo</code>.</li>
+            <li>Integrated Point-of-Sale (POS) &amp; sales transaction history.</li>
+            <li>Thread-safe JSON server-side persistence using <code>SemaphoreSlim</code>.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <strong style="color: var(--secondary);">Assessment Evaluation Pillars:</strong>
+          <ul>
+            <li><strong>Portability:</strong> Instant launch via standard <code>dotnet run</code> without needing external node/npm builds or DB services.</li>
+            <li><strong>React 18 Best Practices:</strong> Functional components, custom hooks, unidirectional data flow, and declarative rendering.</li>
+            <li><strong>Data Integrity:</strong> Concurrency-safe file locking &amp; atomic stock deductions.</li>
+            <li><strong>Enterprise Readiness:</strong> Clean layered architecture prepared for seamless database transition (EF Core).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. System Architecture -->
+    <div class="section-card">
+      <h2>2. High-Level Architectural Approach</h2>
+      <p>
+        The system employs a <strong>Decoupled Client-Server Layered Architecture</strong>. The backend acts as a stateless, RESTful API layer managing data integrity and business rules, while the frontend is a modern React 18 Single Page Application hosted directly via ASP.NET Core Static Files in <code>wwwroot/</code>.
+      </p>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Component</th>
+              <th>Responsibilities</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Presentation (SPA)</strong></td>
+              <td>React 18 + Bootstrap 5 (Hosted in <code>wwwroot/</code>)</td>
+              <td>Declarative UI rendering, React Hooks (<code>useState</code>, <code>useEffect</code>, <code>useMemo</code>), real-time color indications, instant client search, POS modals.</td>
+            </tr>
+            <tr>
+              <td><strong>API &amp; Routing</strong></td>
+              <td>ASP.NET Core 8 Controllers</td>
+              <td>RESTful endpoint routing, HTTP verb dispatching, model binding, input validation (Data Annotations), CORS handling.</td>
+            </tr>
+            <tr>
+              <td><strong>Business &amp; Domain</strong></td>
+              <td><code>IPharmacyService</code> &amp; <code>PharmacyService</code></td>
+              <td>Inventory rules, stock deduction validation, sale pricing calculation, seed data population, concurrency serialization.</td>
+            </tr>
+            <tr>
+              <td><strong>Persistence</strong></td>
+              <td>JSON Storage (<code>medicines.json</code>, <code>sales.json</code>)</td>
+              <td>Server-side data persistence managed with <code>SemaphoreSlim</code> serialization and async file I/O.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <strong>Single-Process Zero-Friction Co-location:</strong> By configuring ASP.NET Core to serve both the Web API endpoints (<code>/api/*</code>) and the React 18 SPA within Kestrel, technical assessors can build and run the entire solution with a single CLI command (<code>dotnet run</code>), eliminating CORS hurdles, multi-process dependencies, and npm build prerequisites during evaluation.
+      </div>
+    </div>
+
+    <!-- 3. Technical Rationale & Trade-Offs -->
+    <div class="section-card">
+      <h2>3. Technology Selection &amp; Design Rationale</h2>
+      
+      <h3>3.1 Backend: .NET 8 Web API</h3>
+      <ul>
+        <li><strong>Strong Typing &amp; Annotations:</strong> Guarantees strict input sanitization on attributes like price formatting (2 decimals) and non-negative stock counts.</li>
+        <li><strong>Asynchronous Pipeline:</strong> Built-in async/await file streaming ensures high throughput even with disk-based persistence.</li>
+        <li><strong>OpenAPI / Swagger:</strong> Self-documenting API endpoints enable evaluators to inspect and test the API contract independently.</li>
+      </ul>
+
+      <h3>3.2 Frontend: React 18 SPA</h3>
+      <ul>
+        <li><strong>Declarative Component Architecture:</strong> Functional components with React Hooks provide clean separation of concerns, eliminating spaghetti DOM code.</li>
+        <li><strong>Memoized Performance (<code>useMemo</code>):</strong> Real-time filtering by medicine name, brand, status, and sort criteria computes efficiently without re-rendering unaffected components.</li>
+        <li><strong>Industry Standard for .NET Developers:</strong> React 18 is the premier frontend framework paired with .NET enterprise backends, demonstrating industry-standard full-stack competence.</li>
+        <li><strong>Zero-Build Assessor Friction:</strong> React 18 and ReactDOM are packaged locally in <code>wwwroot/js/</code> with in-browser Babel compilation, allowing assessors to run the application immediately with pure <code>dotnet run</code>.</li>
+      </ul>
+
+      <h3>3.3 Persistence: JSON Store with SemaphoreSlim</h3>
+      <ul>
+        <li><strong>Requirement Alignment:</strong> The assessment explicitly required server-side JSON storage.</li>
+        <li><strong>Concurrency Hazard Mitigation:</strong> File-based persistence risks race conditions and corruption during concurrent writes. We implemented a <code>SemaphoreSlim(1, 1)</code> lock pattern inside a singleton <code>PharmacyService</code> to serialize read-modify-write transactions safely.</li>
+      </ul>
+    </div>
+
+    <!-- 4. Functional Specification Breakdown -->
+    <div class="section-card">
+      <h2>4. Functional Specification &amp; UI Logic</h2>
+
+      <h3>4.1 Medicine Attributes Representation</h3>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>Data Type</th>
+              <th>Validation &amp; Formatting</th>
+              <th>Display Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Full Name</strong></td>
+              <td>String</td>
+              <td>Required, length 2–150 chars</td>
+              <td>Grid column 1 (Bold)</td>
+            </tr>
+            <tr>
+              <td><strong>Brand</strong></td>
+              <td>String</td>
+              <td>Required, length 1–100 chars</td>
+              <td>Grid column 2 (Badge)</td>
+            </tr>
+            <tr>
+              <td><strong>Expiry Date</strong></td>
+              <td>Date / ISO 8601</td>
+              <td>Required, validated date</td>
+              <td>Grid column 3 + Days countdown</td>
+            </tr>
+            <tr>
+              <td><strong>Quantity</strong></td>
+              <td>Integer</td>
+              <td>Required, range: 0 – 1,000,000</td>
+              <td>Grid column 4 (Stock badge)</td>
+            </tr>
+            <tr>
+              <td><strong>Price</strong></td>
+              <td>Decimal (18,2)</td>
+              <td>Required, range: 0.01 – 1,000,000.00</td>
+              <td>Grid column 5 (Currency <code>$xx.xx</code>)</td>
+            </tr>
+            <tr>
+              <td><strong>Notes</strong></td>
+              <td>String</td>
+              <td>Optional text / clinical notes</td>
+              <td><strong>Excluded from grid columns</strong>; accessible via "View Notes" action modal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>4.2 Color Indication Business Rules</h3>
+      <p>The system evaluates each record against the two critical operational thresholds:</p>
+      <div class="callout danger">
+        <strong>Red Background (<code>.row-expiring-soon</code>):</strong> Applied when <code>(ExpiryDate - Today) &lt; 30 days</code>. Highlights expired or critically expiring medications requiring pharmacist clearance.
+      </div>
+      <div class="callout warning">
+        <strong>Yellow Background (<code>.row-low-stock</code>):</strong> Applied when <code>Quantity &lt; 10</code>. Alerts staff to reorder replenishable stock.
+      </div>
+      <div class="callout">
+        <strong>Dual Indication Handling:</strong> If a medicine satisfies both conditions (e.g., expiring in 9 days with only 4 units remaining), the row applies a prioritized dual-alert styling (<code>.row-critical-both</code>) with dual alert badges.
+      </div>
+
+      <h3>4.3 Sales Records Mechanism</h3>
+      <p>
+        The Point-of-Sale (POS) integration ensures real-time inventory integrity:
+      </p>
+      <ol>
+        <li>User selects a medicine and inputs the desired sale quantity.</li>
+        <li>Client and server validate that <code>Quantity &gt; 0</code> and <code>Quantity &le; AvailableStock</code>.</li>
+        <li>The system calculates <code>TotalPrice = Math.Round(Price * Quantity, 2)</code>.</li>
+        <li>Upon confirmation, medicine inventory is decremented and saved to <code>medicines.json</code>.</li>
+        <li>A distinct immutable transaction record is written to <code>sales.json</code> with an ISO timestamp.</li>
+        <li>React's state engine immediately re-renders the grid, dynamically updating the medicine's stock quantity and color indicators in real time.</li>
+      </ol>
+    </div>
+
+    <!-- 5. Future Scalability Roadmap -->
+    <div class="section-card">
+      <h2>5. Enterprise Scalability &amp; Evolution Roadmap</h2>
+      <p>For transitioning this assessment architecture to enterprise-grade pharmacy scale, the following evolution paths are designed:</p>
+      <ul>
+        <li><strong>Database Migration:</strong> Replace <code>PharmacyService</code> JSON storage with Entity Framework Core (EF Core) backed by PostgreSQL or Microsoft SQL Server via dependency injection without modifying API controllers.</li>
+        <li><strong>Distributed Caching:</strong> Introduce Redis caching for read-heavy inventory queries.</li>
+        <li><strong>Event-Driven Auditing:</strong> Emit domain events via RabbitMQ or Azure Service Bus upon sale completion for warehouse replenishment.</li>
+        <li><strong>Role-Based Access Control (RBAC):</strong> Implement JWT authentication with distinct roles (e.g., <em>Pharmacist</em>, <em>Cashier</em>, <em>Auditor</em>).</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      ABC Pharmacy Assessment Documentation &bull; Generated for Technical Evaluation &bull; Version 1.0
+    </div>
+
+  </div>
+</body>
+</html>

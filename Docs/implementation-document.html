@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implementation Document - ABC Pharmacy (.NET Core + React 18)</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #0284c7;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --card-bg: #ffffff;
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .header-content { max-width: 1100px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav.doc-nav {
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    nav.doc-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+    }
+    nav.doc-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    nav.doc-nav a:hover, nav.doc-nav a.active {
+      color: var(--primary);
+      background-color: #ccfbf1;
+      font-weight: 600;
+    }
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 1.2rem; border-bottom: 2px solid #e6fffa; padding-bottom: 0.4rem; }
+    h3 { font-size: 1.15rem; color: var(--text-main); margin: 1.4rem 0 0.5rem 0; font-weight: 600; }
+    p { margin-bottom: 1rem; color: #334155; }
+    ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; color: #334155; }
+    li { margin-bottom: 0.4rem; }
+    pre {
+      background-color: var(--code-bg);
+      color: var(--code-text);
+      padding: 1.2rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, "Fira Code", Monaco, monospace;
+      font-size: 0.88rem;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    code {
+      font-family: Consolas, "Fira Code", Monaco, monospace;
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+    }
+    pre code { background: none; color: inherit; padding: 0; }
+    .step-box {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.2rem 0;
+      background: #fdfdfd;
+      border-left: 4px solid var(--secondary);
+    }
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <span class="badge">Deployment &amp; Run Manual &bull; .NET + React 18</span>
+      <h1>System Implementation &amp; Execution Guide</h1>
+      <p style="color: #e6fffa; margin-bottom: 0;">Step-by-step setup, configuration, launch, and containerization instructions for ABC Pharmacy</p>
+    </div>
+  </header>
+
+  <nav class="doc-nav">
+    <ul>
+      <li><a href="index.html">📋 Overview Hub</a></li>
+      <li><a href="approach-document.html">📐 Approach Document</a></li>
+      <li><a href="developer-document.html">💻 Developer Document</a></li>
+      <li><a href="unit-test-document.html">🧪 Unit Test Document</a></li>
+      <li><a href="implementation-document.html" class="active">⚙️ Implementation Document</a></li>
+      <li><a href="interview-preparation-document.html">🎯 Interview Prep Document</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- 1. System Requirements -->
+    <div class="section-card">
+      <h2>1. Environment Prerequisites</h2>
+      <ul>
+        <li><strong>Runtime &amp; SDK:</strong> .NET 8.0 SDK (version 8.0.x or higher).</li>
+        <li><strong>Operating System:</strong> Windows 10/11, macOS, or Linux.</li>
+        <li><strong>Web Browser:</strong> Any modern browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari).</li>
+        <li><strong>Optional:</strong> Visual Studio 2022, VS Code with C# Dev Kit, or JetBrains Rider.</li>
+      </ul>
+      <p>Verify your .NET installation by executing:</p>
+      <pre><code>dotnet --version</code></pre>
+    </div>
+
+    <!-- 2. Step-by-Step Launch Instructions -->
+    <div class="section-card">
+      <h2>2. Step-by-Step Launch Instructions (Assessment Alignment)</h2>
+      
+      <div class="step-box">
+        <h3>Step 1: Navigate to the Project Directory</h3>
+        <p>Open PowerShell or Command Prompt and change directory to the project folder:</p>
+        <pre><code>cd "C:\Users\ayesh\Desktop\Mahathir\Projects\ABCPharmacy"</code></pre>
+      </div>
+
+      <div class="step-box">
+        <h3>Step 2: Build and Run the Application</h3>
+        <p>Compile and launch the Kestrel web server using the .NET CLI command:</p>
+        <pre><code>dotnet run</code></pre>
+        <p>Alternatively, launch from any directory specifying the project path:</p>
+        <pre><code>dotnet run --project "C:\Users\ayesh\Desktop\Mahathir\Projects\ABCPharmacy"</code></pre>
+        <p>Kestrel will initialize and output:</p>
+        <pre><code>info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5160
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.</code></pre>
+      </div>
+
+      <div class="step-box">
+        <h3>Step 3: Open the Application &amp; API Preview</h3>
+        <p>Open your browser and navigate to the following endpoints:</p>
+        <ul>
+          <li><strong>Single Page Application (React 18):</strong> <a href="http://localhost:5160" target="_blank">http://localhost:5160</a></li>
+          <li><strong>Swagger OpenAPI Preview:</strong> <a href="http://localhost:5160/swagger" target="_blank">http://localhost:5160/swagger</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. Configuration & Startup Pipeline -->
+    <div class="section-card">
+      <h2>3. Configuration &amp; HTTP Pipeline (Program.cs)</h2>
+      <p>
+        The HTTP request pipeline is structured to seamlessly serve API requests under <code>/api/*</code> and fallback to the React 18 SPA for client-side routing:
+      </p>
+      <pre><code>// Program.cs Pipeline Configuration
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c => {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ABC Pharmacy API v1");
+        c.RoutePrefix = "swagger";
+    });
+}
+
+app.UseCors("AllowAll");
+
+// Serves default index.html and static files from wwwroot
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+app.UseRouting();
+app.UseAuthorization();
+
+app.MapControllers();
+
+// Single Page Application Fallback
+app.MapFallbackToFile("index.html");
+
+app.Run();</code></pre>
+    </div>
+
+    <!-- 4. Data Seeding & Persistence Details -->
+    <div class="section-card">
+      <h2>4. Data Initialization &amp; JSON Storage</h2>
+      <p>
+        When the application starts for the first time, <code>PharmacyService</code> verifies the existence of the <code>Data/</code> directory and initializes seed datasets:
+      </p>
+      <ul>
+        <li><code>Data/medicines.json</code>: Pre-populated with 8 diverse medicines showcasing:
+          <ul>
+            <li><strong>Expiring in &lt; 30 days (Red):</strong> Amoxicillin (+14 days), Ibuprofen (+22 days).</li>
+            <li><strong>Low stock &lt; 10 units (Yellow):</strong> Metformin (6 units), Lisinopril (8 units).</li>
+            <li><strong>Both Red &amp; Yellow (Dual):</strong> Azithromycin (+9 days, 4 units).</li>
+            <li><strong>Standard (Normal):</strong> Paracetamol, Cetirizine, Omeprazole.</li>
+          </ul>
+        </li>
+        <li><code>Data/sales.json</code>: Pre-populated with initial sales transactions to immediately display historical data on the Sales Records tab.</li>
+      </ul>
+    </div>
+
+    <!-- 5. Production Build & Docker Containerization -->
+    <div class="section-card">
+      <h2>5. Production Packaging &amp; Dockerization</h2>
+
+      <h3>5.1 Self-Contained Release Build</h3>
+      <p>To compile an optimized production distribution:</p>
+      <pre><code>dotnet publish -c Release -o ./publish</code></pre>
+
+      <h3>5.2 Docker Containerization</h3>
+      <p>A multi-stage <code>Dockerfile</code> allows portable containerized deployment on any cloud host:</p>
+      <pre><code># Multi-stage Dockerfile
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["ABCPharmacy.csproj", "./"]
+RUN dotnet restore "ABCPharmacy.csproj"
+COPY . .
+RUN dotnet publish "ABCPharmacy.csproj" -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+EXPOSE 8080
+ENV ASPNETCORE_URLS=http://+:8080
+ENTRYPOINT ["dotnet", "ABCPharmacy.dll"]</code></pre>
+    </div>
+
+    <!-- 6. Troubleshooting & Diagnostics -->
+    <div class="section-card">
+      <h2>6. Troubleshooting &amp; Diagnostics</h2>
+      <ul>
+        <li><strong>Port 5160 Already In Use:</strong> Update <code>Properties/launchSettings.json</code> and change <code>applicationUrl</code> to another free port (e.g. <code>http://localhost:5200</code>), or launch with:
+          <pre><code>dotnet run --urls "http://localhost:5200"</code></pre>
+        </li>
+        <li><strong>Resetting Demo Data:</strong> To revert to the clean initial seed state, delete the <code>Data/medicines.json</code> and <code>Data/sales.json</code> files and restart the application; <code>PharmacyService</code> will automatically regenerate fresh seed data.</li>
+        <li><strong>React Browser Cache:</strong> Perform a hard browser reload (<code>Ctrl + F5</code> or <code>Cmd + Shift + R</code>) to ensure freshly updated React component bundles are loaded into memory.</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      ABC Pharmacy Assessment Documentation &bull; Generated for Technical Evaluation &bull; Version 1.0
+    </div>
+
+  </div>
+</body>
+</html>

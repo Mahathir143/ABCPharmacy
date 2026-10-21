@@ -1,0 +1,92 @@
+[
+  {
+    "id": "med-001",
+    "fullName": "Amoxicillin 500mg Capsules",
+    "notes": "Store below 25\u00B0C. Broad-spectrum penicillin antibiotic.",
+    "expiryDate": "2026-11-03T00:00:00+05:30",
+    "quantity": 45,
+    "price": 12.50,
+    "brand": "GlaxoSmithKline"
+  },
+  {
+    "id": "med-002",
+    "fullName": "Ibuprofen 400mg Tablets",
+    "notes": "Take with or after food. NSAID pain reliever and anti-inflammatory.",
+    "expiryDate": "2026-11-11T00:00:00+05:30",
+    "quantity": 60,
+    "price": 8.75,
+    "brand": "Advil / Pfizer"
+  },
+  {
+    "id": "med-003",
+    "fullName": "Azithromycin 250mg",
+    "notes": "Critical warning: low stock and expiring soon. Macrolide antibiotic.",
+    "expiryDate": "2026-10-29T00:00:00+05:30",
+    "quantity": 4,
+    "price": 24.00,
+    "brand": "Pfizer"
+  },
+  {
+    "id": "med-004",
+    "fullName": "Metformin 850mg Tablets",
+    "notes": "First-line medication for type 2 diabetes. Keep away from moisture.",
+    "expiryDate": "2027-06-17T00:00:00+05:30",
+    "quantity": 6,
+    "price": 11.20,
+    "brand": "Glucophage"
+  },
+  {
+    "id": "med-005",
+    "fullName": "Lisinopril 10mg Tablets",
+    "notes": "ACE inhibitor prescribed for hypertension and heart conditions.",
+    "expiryDate": "2027-08-26T00:00:00+05:30",
+    "quantity": 8,
+    "price": 14.30,
+    "brand": "Zestril"
+  },
+  {
+    "id": "med-006",
+    "fullName": "Paracetamol 500mg Tablets",
+    "notes": "Antipyretic and analgesic. Maximum dosage 4000mg per 24 hours.",
+    "expiryDate": "2027-12-14T00:00:00+05:30",
+    "quantity": 130,
+    "price": 4.50,
+    "brand": "Panadol"
+  },
+  {
+    "id": "med-007",
+    "fullName": "Cetirizine 10mg Film-Coated",
+    "notes": "Non-sedating antihistamine for allergic rhinitis and urticaria.",
+    "expiryDate": "2028-03-13T00:00:00+05:30",
+    "quantity": 95,
+    "price": 16.80,
+    "brand": "Zyrtec"
+  },
+  {
+    "id": "med-008",
+    "fullName": "Omeprazole 20mg Delayed-Release",
+    "notes": "Proton pump inhibitor for GERD and peptic ulcer disease.",
+    "expiryDate": "2027-10-20T00:00:00+05:30",
+    "quantity": 110,
+    "price": 19.95,
+    "brand": "Prilosec"
+  },
+  {
+    "id": "14065a4ff0984f03b749fe2a7b9dded4",
+    "fullName": "Atorvastatin 20mg",
+    "notes": "Lipid-lowering agent. Take at night.",
+    "expiryDate": "2027-01-15T00:00:00Z",
+    "quantity": 3,
+    "price": 28.5,
+    "brand": "Lipitor"
+  },
+  {
+    "id": "866adcfdcd4f434d9b60ebfb576dd895",
+    "fullName": "Vitamin B-Complex Syrup with Lysine",
+    "notes": "Store at a temperature not exceeding 25 degree C.",
+    "expiryDate": "2027-09-30T00:00:00Z",
+    "quantity": 50,
+    "price": 1.95,
+    "brand": "Polybion Active"
+  }
+]

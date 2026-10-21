@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABC Pharmacy - Project Documentation Portal (.NET + React)</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #0284c7;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --card-bg: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .badge-top {
+      display: inline-block;
+      padding: 0.35rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.25);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .container { max-width: 1100px; margin: 2.5rem auto; padding: 0 1.5rem; }
+    .intro-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .doc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .doc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+      border-color: var(--primary);
+    }
+    .doc-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+    .doc-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+    .doc-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .doc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+      padding: 0.65rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .doc-btn:hover { background: var(--primary-dark); }
+    .quick-start {
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 12px;
+      padding: 1.75rem;
+      font-family: Consolas, "Fira Code", monospace;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <span class="badge-top">Company Assessment Submission Package</span>
+      <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">ABC Pharmacy Assessment Documentation Portal</h1>
+      <p style="font-size: 1.1rem; color: #ccfbf1; max-width: 750px; margin: 0 auto;">
+        Single Page Application (SPA) using .NET 8 Web API, React 18, Bootstrap 5, and Concurrency-Safe Server-Side JSON Storage
+      </p>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="intro-card">
+      <h2 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 0.75rem;">📋 Project Overview &amp; Evaluation Highlights</h2>
+      <p style="color: #334155; margin-bottom: 1rem;">
+        This documentation portal accompanies the engineering submission for <strong>Client ABC Pharmacy</strong>. Engineered by a <strong>.NET + React.js Full Stack Developer</strong>, the system provides real-time medicine inventory tracking with business-rule color coding, Point-of-Sale (POS) sale records management with atomic stock deductions, and server-side JSON persistence.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem;">
+        <span style="background: #e0f2fe; color: #0369a1; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600;">.NET 8 Web API</span>
+        <span style="background: #e0f2fe; color: #0369a1; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600;">React 18 Single Page App</span>
+        <span style="background: #e0f2fe; color: #0369a1; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600;">Bootstrap 5 UI</span>
+        <span style="background: #fef3c7; color: #92400e; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600;">Red (&lt;30d) &amp; Yellow (&lt;10 Qty) Alerts</span>
+        <span style="background: #f0fdf4; color: #166534; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600;">SemaphoreSlim File Thread-Safety</span>
+        <span style="background: #fae8ff; color: #86198f; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600;">Swagger / OpenAPI</span>
+      </div>
+    </div>
+
+    <!-- 5 Document Cards Grid -->
+    <div class="docs-grid">
+
+      <!-- Card 1: Approach Document -->
+      <div class="doc-card">
+        <div>
+          <span class="doc-icon">📐</span>
+          <h3 class="doc-title">Approach Document</h3>
+          <p class="doc-desc">
+            Strategic architectural rationale, layered system design, technology evaluation (why .NET 8 Web API + React 18), UI/UX decisions, and enterprise scalability roadmap.
+          </p>
+        </div>
+        <a href="approach-document.html" class="doc-btn">Read Approach Document &rarr;</a>
+      </div>
+
+      <!-- Card 2: Developer Document -->
+      <div class="doc-card">
+        <div>
+          <span class="doc-icon">💻</span>
+          <h3 class="doc-title">Developer Document</h3>
+          <p class="doc-desc">
+            Complete codebase walkthrough, C# data models, SemaphoreSlim concurrency serialization, REST API specification, and React 18 component hooks architecture.
+          </p>
+        </div>
+        <a href="developer-document.html" class="doc-btn">Read Developer Document &rarr;</a>
+      </div>
+
+      <!-- Card 3: Unit Test Document -->
+      <div class="doc-card">
+        <div>
+          <span class="doc-icon">🧪</span>
+          <h3 class="doc-title">Unit Test Document</h3>
+          <p class="doc-desc">
+            Quality assurance strategy, comprehensive test case matrix, boundary conditions, complete xUnit test suite implementation, and evaluator manual test script.
+          </p>
+        </div>
+        <a href="unit-test-document.html" class="doc-btn">Read Unit Test Document &rarr;</a>
+      </div>
+
+      <!-- Card 4: Implementation Document -->
+      <div class="doc-card">
+        <div>
+          <span class="doc-icon">⚙️</span>
+          <h3 class="doc-title">Implementation Document</h3>
+          <p class="doc-desc">
+            Prerequisites, step-by-step CLI execution instructions, configuration pipeline, initial data seeding details, production release build, and Docker deployment.
+          </p>
+        </div>
+        <a href="implementation-document.html" class="doc-btn">Read Implementation Document &rarr;</a>
+      </div>
+
+      <!-- Card 5: Interview Prep Document -->
+      <div class="doc-card" style="border: 2px solid var(--primary); background: #f0fdfa;">
+        <div>
+          <span class="doc-icon">🎯</span>
+          <h3 class="doc-title" style="color: var(--primary);">Interview Preparation Document</h3>
+          <p class="doc-desc">
+            2-minute elevator pitch for .NET + React developers, high-frequency technical defense Q&amp;A (concurrency, useMemo, controlled forms), and live-coding scenarios.
+          </p>
+        </div>
+        <a href="interview-preparation-document.html" class="doc-btn" style="background: var(--primary-dark);">Read Interview Prep Document &rarr;</a>
+      </div>
+
+    </div>
+
+    <!-- Quick Launch Command Block -->
+    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem;">
+      <h3 style="color: var(--text-main); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">⚡ Quick Assessment Launch Command</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">To run the application directly from terminal:</p>
+      <div class="quick-start">
+        <span style="color: #64748b;"># Run directly via dotnet CLI</span><br>
+        <span style="color: #38bdf8;">dotnet run --project</span> "C:\Users\ayesh\Desktop\Mahathir\Projects\ABCPharmacy"<br><br>
+        <span style="color: #64748b;"># Open in browser</span><br>
+        <span style="color: #a7f3d0;">http://localhost:5160</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #64748b;"># React 18 Single Page Application</span><br>
+        <span style="color: #a7f3d0;">http://localhost:5160/swagger</span> <span style="color: #64748b;"># OpenAPI Explorer</span>
+      </div>
+    </div>
+
+    <div class="footer">
+      ABC Pharmacy Assessment Documentation Portal &bull; Generated for Technical Evaluation &bull; Version 1.0
+    </div>
+
+  </div>
+</body>
+</html>

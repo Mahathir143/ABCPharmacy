@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Document - ABC Pharmacy (.NET Core + React 18)</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #0284c7;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --card-bg: #ffffff;
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .header-content { max-width: 1100px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav.doc-nav {
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    nav.doc-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+    }
+    nav.doc-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    nav.doc-nav a:hover, nav.doc-nav a.active {
+      color: var(--primary);
+      background-color: #ccfbf1;
+      font-weight: 600;
+    }
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 1.2rem; border-bottom: 2px solid #e6fffa; padding-bottom: 0.4rem; }
+    h3 { font-size: 1.15rem; color: var(--text-main); margin: 1.4rem 0 0.5rem 0; font-weight: 600; }
+    p { margin-bottom: 1rem; color: #334155; }
+    ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; color: #334155; }
+    li { margin-bottom: 0.4rem; }
+    pre {
+      background-color: var(--code-bg);
+      color: var(--code-text);
+      padding: 1.2rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, "Fira Code", Monaco, monospace;
+      font-size: 0.88rem;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    code {
+      font-family: Consolas, "Fira Code", Monaco, monospace;
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+    }
+    pre code { background: none; color: inherit; padding: 0; }
+    .table-responsive { overflow-x: auto; margin: 1rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border: 1px solid var(--border-color); }
+    th { background: #f1f5f9; color: #475569; font-weight: 600; }
+    tr:nth-child(even) { background-color: #f8fafc; }
+    .callout {
+      border-left: 4px solid var(--primary);
+      background: #f0fdfa;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.2rem 0;
+    }
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <span class="badge">Developer Reference &bull; .NET + React 18</span>
+      <h1>ABC Pharmacy Developer Documentation</h1>
+      <p style="color: #e6fffa; margin-bottom: 0;">Comprehensive architectural, API, model, and code walkthrough for full-stack developers and evaluators</p>
+    </div>
+  </header>
+
+  <nav class="doc-nav">
+    <ul>
+      <li><a href="index.html">📋 Overview Hub</a></li>
+      <li><a href="approach-document.html">📐 Approach Document</a></li>
+      <li><a href="developer-document.html" class="active">💻 Developer Document</a></li>
+      <li><a href="unit-test-document.html">🧪 Unit Test Document</a></li>
+      <li><a href="implementation-document.html">⚙️ Implementation Document</a></li>
+      <li><a href="interview-preparation-document.html">🎯 Interview Prep Document</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- 1. Solution Architecture & File Tree -->
+    <div class="section-card">
+      <h2>1. Solution Directory Structure</h2>
+      <p>The project follows standard ASP.NET Core clean architecture principles with embedded React 18 static assets:</p>
+      <pre><code>ABCPharmacy/
+├── Controllers/
+│   ├── MedicinesController.cs     # REST API for Medicine CRUD & search queries
+│   └── SalesController.cs         # REST API for recording sales & fetching transaction history
+├── Data/
+│   ├── medicines.json             # Server-side JSON store for medicine records
+│   └── sales.json                 # Server-side JSON store for sale transactions
+├── Models/
+│   ├── Medicine.cs                # Entity model with data validation annotations
+│   └── SaleRecord.cs              # Entity model for sales and CreateSaleDto
+├── Services/
+│   ├── IPharmacyService.cs        # Service contract for inventory & sales
+│   └── PharmacyService.cs         # Thread-safe implementation with SemaphoreSlim
+├── Properties/
+│   └── launchSettings.json        # Launch profiles (port 5160)
+├── wwwroot/
+│   ├── css/
+│   │   ├── app.css                # Custom styling & color indication definitions
+│   │   ├── bootstrap.min.css      # Bootstrap 5 stylesheet (self-contained)
+│   │   └── bootstrap-icons.min.css# Icon font & classes
+│   ├── js/
+│   │   ├── app.js                 # React 18 SPA component logic (Hooks, memoization, modals)
+│   │   ├── react.production.min.js     # React 18 Core library (self-contained)
+│   │   ├── react-dom.production.min.js # ReactDOM 18 renderer (self-contained)
+│   │   ├── babel.min.js           # In-browser JSX transformer (self-contained)
+│   │   └── bootstrap.bundle.min.js# Bootstrap components
+│   └── index.html                 # Single Page Application HTML mount point
+├── ABCPharmacy.csproj             # .NET 8 Web SDK configuration
+└── Program.cs                     # Startup bootstrapping, DI, Static Files & Swagger</code></pre>
+    </div>
+
+    <!-- 2. Backend Architecture & C# Models -->
+    <div class="section-card">
+      <h2>2. Backend Architecture Deep Dive</h2>
+
+      <h3>2.1 Domain Models</h3>
+      <p>Data models utilize <code>System.ComponentModel.DataAnnotations</code> for declarative request validation:</p>
+
+      <pre><code>// Models/Medicine.cs
+public class Medicine
+{
+    public string Id { get; set; } = Guid.NewGuid().ToString("N");
+
+    [Required(ErrorMessage = "Full Name of the medicine is required")]
+    [StringLength(150, MinimumLength = 2)]
+    public string FullName { get; set; } = string.Empty;
+
+    public string? Notes { get; set; } = string.Empty;
+
+    [Required(ErrorMessage = "Expiry Date is required")]
+    public DateTime ExpiryDate { get; set; }
+
+    [Range(0, 1000000, ErrorMessage = "Quantity must be between 0 and 1,000,000")]
+    public int Quantity { get; set; }
+
+    [Range(0.01, 1000000.00, ErrorMessage = "Price must be greater than 0")]
+    public decimal Price { get; set; }
+
+    [Required(ErrorMessage = "Brand is required")]
+    [StringLength(100, MinimumLength = 1)]
+    public string Brand { get; set; } = string.Empty;
+}</code></pre>
+
+      <pre><code>// Models/SaleRecord.cs
+public class SaleRecord
+{
+    public string Id { get; set; } = Guid.NewGuid().ToString("N");
+    public string MedicineId { get; set; } = string.Empty;
+    public string MedicineName { get; set; } = string.Empty;
+    public string Brand { get; set; } = string.Empty;
+    public int Quantity { get; set; }
+    public decimal UnitPrice { get; set; }
+    public decimal TotalPrice { get; set; }
+    public DateTime SaleDate { get; set; } = DateTime.UtcNow;
+    public string? CustomerName { get; set; }
+    public string? Notes { get; set; }
+}
+
+public class CreateSaleDto
+{
+    [Required]
+    public string MedicineId { get; set; } = string.Empty;
+
+    [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1")]
+    public int Quantity { get; set; }
+
+    public string? CustomerName { get; set; }
+    public string? Notes { get; set; }
+}</code></pre>
+
+      <h3>2.2 Thread-Safe Persistence with SemaphoreSlim</h3>
+      <p>
+        Because JSON flat files do not possess an underlying ACID storage engine, concurrent writes can lead to file-lock exceptions and data corruption. <code>PharmacyService</code> implements an asynchronous mutual exclusion lock using <code>SemaphoreSlim(1, 1)</code>:
+      </p>
+
+      <pre><code>public class PharmacyService : IPharmacyService
+{
+    private readonly SemaphoreSlim _semaphore = new(1, 1);
+
+    public async Task&lt;SaleRecord&gt; RecordSaleAsync(CreateSaleDto dto)
+    {
+        await _semaphore.WaitAsync();
+        try
+        {
+            var medicines = await ReadMedicinesInternalAsync();
+            var medicine = medicines.FirstOrDefault(m =&gt; m.Id == dto.MedicineId)
+                ?? throw new KeyNotFoundException($"Medicine '{dto.MedicineId}' not found.");
+
+            if (medicine.Quantity &lt; dto.Quantity)
+                throw new InvalidOperationException($"Insufficient stock ({medicine.Quantity}).");
+
+            // Deduct stock atomically
+            medicine.Quantity -= dto.Quantity;
+            await WriteMedicinesInternalAsync(medicines);
+
+            // Record sale transaction
+            var sale = new SaleRecord { ... };
+            var sales = await ReadSalesInternalAsync();
+            sales.Add(sale);
+            await WriteSalesInternalAsync(sales);
+
+            return sale;
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+}</code></pre>
+    </div>
+
+    <!-- 3. REST API Contract -->
+    <div class="section-card">
+      <h2>3. REST API Specification</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+              <th>Status Codes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>GET</code></td>
+              <td><code>/api/medicines</code></td>
+              <td>Returns all medicines. Supports optional <code>?search=query</code> parameter.</td>
+              <td>200 OK</td>
+            </tr>
+            <tr>
+              <td><code>GET</code></td>
+              <td><code>/api/medicines/{id}</code></td>
+              <td>Returns single medicine record with complete details (including Notes).</td>
+              <td>200 OK, 404 Not Found</td>
+            </tr>
+            <tr>
+              <td><code>POST</code></td>
+              <td><code>/api/medicines</code></td>
+              <td>Creates a new medicine in inventory and persists to <code>medicines.json</code>.</td>
+              <td>201 Created, 400 Bad Request</td>
+            </tr>
+            <tr>
+              <td><code>PUT</code></td>
+              <td><code>/api/medicines/{id}</code></td>
+              <td>Updates an existing medicine details.</td>
+              <td>200 OK, 400 Bad Request, 404 Not Found</td>
+            </tr>
+            <tr>
+              <td><code>DELETE</code></td>
+              <td><code>/api/medicines/{id}</code></td>
+              <td>Removes medicine from inventory.</td>
+              <td>204 No Content, 404 Not Found</td>
+            </tr>
+            <tr>
+              <td><code>GET</code></td>
+              <td><code>/api/sales</code></td>
+              <td>Returns all sales records ordered by <code>saleDate DESC</code>.</td>
+              <td>200 OK</td>
+            </tr>
+            <tr>
+              <td><code>POST</code></td>
+              <td><code>/api/sales</code></td>
+              <td>Records sale, validates stock, decrements medicine quantity, persists sale record.</td>
+              <td>201 Created, 400 Bad Request, 404 Not Found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 4. Frontend SPA Architecture (React 18) -->
+    <div class="section-card">
+      <h2>4. Frontend SPA Architecture (React 18)</h2>
+
+      <h3>4.1 State Management &amp; React Hooks (<code>wwwroot/js/app.js</code>)</h3>
+      <p>The single page application is built using modern <strong>React 18 functional components</strong> leveraging core hooks:</p>
+      <ul>
+        <li><code>useState</code>: Manages inventory list, sales records, search input, status filters, active modals, and form inputs.</li>
+        <li><code>useEffect</code>: Triggers asynchronous API fetches on initial component mount (<code>fetchMedicines</code>, <code>fetchSales</code>).</li>
+        <li><code>useMemo</code>: Memoizes computationally expensive derived state, including the filtered/sorted inventory list and live total sale calculations.</li>
+      </ul>
+
+      <h3>4.2 Real-time Search &amp; Filter via <code>useMemo</code></h3>
+      <pre><code>const filteredMedicines = useMemo(() => {
+  let list = [...medicines];
+
+  // 1. Search Query on Name or Brand
+  if (searchQuery.trim()) {
+    const q = searchQuery.toLowerCase().trim();
+    list = list.filter(m =>
+      m.fullName.toLowerCase().includes(q) ||
+      m.brand.toLowerCase().includes(q)
+    );
+  }
+
+  // 2. Status Filters
+  if (statusFilter === 'expiring') {
+    list = list.filter(m => isExpiringSoon(m));
+  } else if (statusFilter === 'lowstock') {
+    list = list.filter(m => isLowStock(m));
+  } else if (statusFilter === 'both') {
+    list = list.filter(m => isExpiringSoon(m) && isLowStock(m));
+  } else if (statusFilter === 'normal') {
+    list = list.filter(m => !isExpiringSoon(m) && !isLowStock(m));
+  }
+
+  // 3. Dynamic Multi-Column Sorting
+  list.sort((a, b) => {
+    let valA = a[sortBy], valB = b[sortBy];
+    if (sortBy === 'expiry') {
+      valA = new Date(a.expiryDate).getTime();
+      valB = new Date(b.expiryDate).getTime();
+    }
+    if (valA < valB) return sortOrder === 'asc' ? -1 : 1;
+    if (valA > valB) return sortOrder === 'asc' ? 1 : -1;
+    return 0;
+  });
+
+  return list;
+}, [medicines, searchQuery, statusFilter, sortBy, sortOrder]);</code></pre>
+
+      <h3>4.3 Color Indication Engine</h3>
+      <pre><code>// Calculates exact calendar days until expiration
+const getDaysUntilExpiry = (dateStr) => {
+  if (!dateStr) return 999;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const expiry = new Date(dateStr);
+  expiry.setHours(0, 0, 0, 0);
+  return Math.ceil((expiry.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+};
+
+// Requirement: Red background if expiry date < 30 days
+const isExpiringSoon = (medicine) => getDaysUntilExpiry(medicine.expiryDate) &lt; 30;
+
+// Requirement: Yellow background if quantity in stock < 10
+const isLowStock = (medicine) => medicine.quantity &lt; 10;
+
+// Row CSS class resolver
+const getRowClass = (medicine) => {
+  const expiring = isExpiringSoon(medicine);
+  const lowStock = isLowStock(medicine);
+
+  if (expiring &amp;&amp; lowStock) return 'row-critical-both';
+  if (expiring) return 'row-expiring-soon';
+  if (lowStock) return 'row-low-stock';
+  return 'row-normal';
+};</code></pre>
+
+      <h3>4.4 Point-of-Sale Reactive Calculation</h3>
+      <pre><code>const saleTotalPrice = useMemo(() => {
+  if (!selectedSaleMedicine || !saleForm.quantity) return '0.00';
+  return (selectedSaleMedicine.price * saleForm.quantity).toFixed(2);
+}, [selectedSaleMedicine, saleForm.quantity]);</code></pre>
+    </div>
+
+    <!-- 5. Styling & Accessibility -->
+    <div class="section-card">
+      <h2>5. CSS Architecture (<code>wwwroot/css/app.css</code>)</h2>
+      <p>The application defines dedicated CSS custom properties to maintain high visual contrast and accessibility:</p>
+      <pre><code>:root {
+  --row-red-bg: #fee2e2;
+  --row-red-border: #f87171;
+  --row-red-text: #991b1b;
+  
+  --row-yellow-bg: #fef3c7;
+  --row-yellow-border: #facc15;
+  --row-yellow-text: #854d0e;
+  
+  --row-dual-bg: #ffedd5;
+  --row-dual-border: #fb923c;
+  --row-dual-text: #9a3412;
+}
+
+.row-expiring-soon {
+  background-color: var(--row-red-bg) !important;
+  color: var(--row-red-text) !important;
+  border-left: 4px solid var(--row-red-border) !important;
+}
+
+.row-low-stock {
+  background-color: var(--row-yellow-bg) !important;
+  color: var(--row-yellow-text) !important;
+  border-left: 4px solid var(--row-yellow-border) !important;
+}</code></pre>
+    </div>
+
+    <div class="footer">
+      ABC Pharmacy Assessment Documentation &bull; Generated for Technical Evaluation &bull; Version 1.0
+    </div>
+
+  </div>
+</body>
+</html>

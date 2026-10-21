@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interview Preparation Document - ABC Pharmacy (.NET + React Assessment Defense)</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #0284c7;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --card-bg: #ffffff;
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+      --accent: #7c3aed;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .header-content { max-width: 1100px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav.doc-nav {
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    nav.doc-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+    }
+    nav.doc-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    nav.doc-nav a:hover, nav.doc-nav a.active {
+      color: var(--primary);
+      background-color: #ccfbf1;
+      font-weight: 600;
+    }
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 1.2rem; border-bottom: 2px solid #e6fffa; padding-bottom: 0.4rem; }
+    h3 { font-size: 1.15rem; color: var(--text-main); margin: 1.4rem 0 0.5rem 0; font-weight: 600; }
+    p { margin-bottom: 1rem; color: #334155; }
+    ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; color: #334155; }
+    li { margin-bottom: 0.4rem; }
+    pre {
+      background-color: var(--code-bg);
+      color: var(--code-text);
+      padding: 1.2rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, "Fira Code", Monaco, monospace;
+      font-size: 0.88rem;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    code {
+      font-family: Consolas, "Fira Code", Monaco, monospace;
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+    }
+    pre code { background: none; color: inherit; padding: 0; }
+    .qa-box {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      background: #ffffff;
+      border-left: 4px solid var(--primary);
+    }
+    .qa-box.technical { border-left-color: var(--secondary); }
+    .qa-box.architectural { border-left-color: var(--accent); }
+    .qa-question {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .qa-tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .qa-answer { color: #334155; font-size: 0.95rem; }
+    .qa-answer strong { color: #0f172a; }
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <span class="badge">Assessment Defense &bull; .NET + React 18 Full Stack</span>
+      <h1>Assessment Defense &amp; Technical Interview Preparation Guide</h1>
+      <p style="color: #e6fffa; margin-bottom: 0;">Tailored Q&amp;A, architectural defense, React 18 hooks rationale, and live-coding scenarios for Full Stack .NET + React Developer roles</p>
+    </div>
+  </header>
+
+  <nav class="doc-nav">
+    <ul>
+      <li><a href="index.html">📋 Overview Hub</a></li>
+      <li><a href="approach-document.html">📐 Approach Document</a></li>
+      <li><a href="developer-document.html">💻 Developer Document</a></li>
+      <li><a href="unit-test-document.html">🧪 Unit Test Document</a></li>
+      <li><a href="implementation-document.html">⚙️ Implementation Document</a></li>
+      <li><a href="interview-preparation-document.html" class="active">🎯 Interview Prep Document</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- 1. The 2-Minute Elevator Pitch -->
+    <div class="section-card">
+      <h2>1. The 2-Minute Solution Walkthrough (Elevator Pitch)</h2>
+      <p>
+        When the interviewer opens with: <em>"Tell me about this project and walk me through your technical solution"</em>, deliver this confident, structured answer:
+      </p>
+      <div style="background: #f0fdfa; border: 1px solid #ccfbf1; padding: 1.25rem; border-radius: 8px;">
+        <p><strong>"Thank you. As a .NET and React Full Stack Developer, I engineered this Single Page Application for Client ABC Pharmacy to streamline medicine inventory control and point-of-sale transactions with precision and high performance."</strong></p>
+        <p><strong>"I structured the solution around three core architectural pillars:</strong></p>
+        <ol>
+          <li><strong>Component-Driven React 18 UI:</strong> I implemented the frontend using modern React 18 functional components with hooks (<code>useState</code>, <code>useEffect</code>, and <code>useMemo</code>). I tracked all mandatory medicine attributes, excluding Notes from the main grid columns to preserve visual clarity while providing an instant modal inspection view.</li>
+          <li><strong>Proactive Visual Alerts &amp; Instant Filtering:</strong> Leveraged React's <code>useMemo</code> hook to perform real-time, memoized multi-attribute search and dynamic color coding—applying soft Red for medicines expiring in under 30 days and Yellow for stock under 10 units, with a dual-warning badge for items triggering both.</li>
+          <li><strong>Thread-Safe ASP.NET Core Web API:</strong> Because the assessment required server-side JSON file persistence, I designed a thread-safe repository service utilizing <code>SemaphoreSlim(1,1)</code>. When a sale is processed, the system atomically validates stock, deducts inventory, calculates the exact bill, and records the immutable transaction in JSON with complete concurrency protection."</li>
+        </ol>
+        <p style="margin-bottom: 0;"><strong>"The solution is fully self-contained: evaluators can run the entire system with a single <code>dotnet run</code> command without external database setups or npm build friction."</strong></p>
+      </div>
+    </div>
+
+    <!-- 2. Technical Deep-Dive Q&A -->
+    <div class="section-card">
+      <h2>2. High-Frequency Technical Interview Q&amp;A (.NET + React)</h2>
+
+      <!-- Q1 -->
+      <div class="qa-box technical">
+        <div class="qa-question">
+          <span class="qa-tag">React 18 &amp; State</span>
+          <span>Q1: Why did you use React 18 and how does the state update flow when a sale is recorded?</span>
+        </div>
+        <div class="qa-answer">
+          <p><strong>Answer:</strong> "React 18 is the enterprise standard for pairing with .NET Web APIs due to its declarative component model and unidirectional data flow.</p>
+          <p>When a cashier records a sale:</p>
+          <ol>
+            <li>The <code>RecordSaleModal</code> validates the sale quantity against available stock in local state before dispatching a <code>POST /api/sales</code> request.</li>
+            <li>Upon receiving the <code>201 Created</code> response from the Web API, React's state setter updates both the <code>medicines</code> array and the <code>sales</code> array.</li>
+            <li>The <code>useMemo</code> hook listening to the <code>medicines</code> dependency immediately re-computes the filtered grid. If a medicine's stock dropped below 10, React automatically recalculates the row's CSS class to <code>.row-low-stock</code> (Yellow) in real time without a page refresh."</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="qa-box technical">
+        <div class="qa-question">
+          <span class="qa-tag">Performance</span>
+          <span>Q2: Why did you choose <code>useMemo</code> for medicine filtering and search?</span>
+        </div>
+        <div class="qa-answer">
+          <p><strong>Answer:</strong> "Without <code>useMemo</code>, filtering, search query matching, status filtering, and multi-column sorting would execute on <em>every single render</em>—for example, whenever the user types a single character in a modal input, toggles a toast, or switches tabs.</p>
+          <p>By wrapping the filtering pipeline in <code>useMemo(() => { ... }, [medicines, searchQuery, statusFilter, sortBy, sortOrder])</code>, React caches the computed list and only re-evaluates when one of those explicit dependencies changes, drastically improving rendering performance."</p>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="qa-box technical">
+        <div class="qa-question">
+          <span class="qa-tag">Concurrency</span>
+          <span>Q3: How did you solve concurrency and race conditions with server-side JSON persistence?</span>
+        </div>
+        <div class="qa-answer">
+          <p><strong>Answer:</strong> "In ASP.NET Core, incoming HTTP requests run concurrently across thread-pool threads. If two cashiers sell units of the same medicine simultaneously, parallel read-modify-write operations on <code>medicines.json</code> would cause file locking exceptions (<code>IOException</code>) or dirty writes resulting in negative stock.</p>
+          <p>To eliminate this, I registered <code>PharmacyService</code> as a <strong>Singleton</strong> and protected all file read/write operations using an asynchronous mutual-exclusion lock: <code>SemaphoreSlim(1, 1)</code>. The semaphore guarantees that only one request enters the critical section at any given time, reading the latest JSON data, validating stock, decrementing the quantity, and writing back to disk before releasing the lock."</p>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="qa-box architectural">
+        <div class="qa-question">
+          <span class="qa-tag">Architecture</span>
+          <span>Q4: How would you migrate this architecture to an enterprise production environment?</span>
+        </div>
+        <div class="qa-answer">
+          <p><strong>Answer:</strong> "Because I designed the backend against an interface contract (<code>IPharmacyService</code>), scaling to enterprise scale requires zero changes to the API controllers or the React frontend:</p>
+          <ol>
+            <li><strong>Database Transition:</strong> Implement <code>EfPharmacyService</code> using Entity Framework Core with SQL Server or PostgreSQL, incorporating optimistic concurrency tokens (<code>RowVersion</code>).</li>
+            <li><strong>Caching:</strong> Wrap frequent inventory reads in a Redis distributed cache with write-through invalidation upon sales.</li>
+            <li><strong>Asynchronous Events:</strong> Emit a <code>MedicineSoldEvent</code> via RabbitMQ or Azure Service Bus to trigger automatic inventory re-ordering and analytics ingestion.</li>
+            <li><strong>Security:</strong> Implement OAuth2/OpenID Connect with JWT Bearer tokens and ASP.NET Core Role-Based Authorization."</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="qa-box technical">
+        <div class="qa-question">
+          <span class="qa-tag">React Forms</span>
+          <span>Q5: Are your forms in React controlled or uncontrolled? Why?</span>
+        </div>
+        <div class="qa-answer">
+          <p><strong>Answer:</strong> "I implemented <strong>Controlled Components</strong>. Every input's value is bound to React state (via <code>value</code> and <code>onChange</code> handlers). This allows live validation—for instance, disabling the sale confirmation button immediately if the entered quantity exceeds available stock, and displaying real-time bill calculations dynamically."</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. Live Coding Challenges -->
+    <div class="section-card">
+      <h2>3. Potential Live Coding / Modification Challenges &amp; Solutions</h2>
+      <p>Assessors often ask candidates to make quick changes during the interview. Here are rapid solutions for the most common requests:</p>
+
+      <h3>Challenge A: "Add a discount percentage field to the React sale form"</h3>
+      <p><strong>Solution:</strong> In <code>app.js</code>, add <code>discountPercent: 0</code> to <code>saleForm</code> state, and update the computed total:</p>
+      <pre><code>const saleTotalPrice = useMemo(() => {
+  if (!selectedSaleMedicine || !saleForm.quantity) return '0.00';
+  const gross = selectedSaleMedicine.price * saleForm.quantity;
+  const discount = gross * ((Number(saleForm.discountPercent) || 0) / 100);
+  return (gross - discount).toFixed(2);
+}, [selectedSaleMedicine, saleForm.quantity, saleForm.discountPercent]);</code></pre>
+
+      <h3>Challenge B: "Export sales history as a CSV file in .NET"</h3>
+      <p><strong>Solution:</strong> Add a new endpoint to <code>SalesController.cs</code>:</p>
+      <pre><code>[HttpGet("export-csv")]
+public async Task&lt;IActionResult&gt; ExportCsv()
+{
+    var sales = await _pharmacyService.GetSalesAsync();
+    var sb = new StringBuilder();
+    sb.AppendLine("SaleId,Date,Medicine,Brand,Quantity,UnitPrice,TotalPrice");
+    foreach (var s in sales)
+    {
+        sb.AppendLine($"{s.Id},{s.SaleDate:yyyy-MM-dd},{s.MedicineName},{s.Brand},{s.Quantity},{s.UnitPrice},{s.TotalPrice}");
+    }
+    return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", "sales.csv");
+}</code></pre>
+    </div>
+
+    <div class="footer">
+      ABC Pharmacy Assessment Documentation &bull; Generated for Technical Evaluation &bull; Version 1.0
+    </div>
+
+  </div>
+</body>
+</html>

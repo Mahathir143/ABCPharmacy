@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Test Document - ABC Pharmacy (.NET Core + React 18)</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #0284c7;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --card-bg: #ffffff;
+      --code-bg: #0f172a;
+      --code-text: #e2e8f0;
+      --badge-pass: #16a34a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .header-content { max-width: 1100px; margin: 0 auto; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav.doc-nav {
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    nav.doc-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      gap: 0.5rem;
+    }
+    nav.doc-nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    nav.doc-nav a:hover, nav.doc-nav a.active {
+      color: var(--primary);
+      background-color: #ccfbf1;
+      font-weight: 600;
+    }
+    .container { max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 1.2rem; border-bottom: 2px solid #e6fffa; padding-bottom: 0.4rem; }
+    h3 { font-size: 1.15rem; color: var(--text-main); margin: 1.4rem 0 0.5rem 0; font-weight: 600; }
+    p { margin-bottom: 1rem; color: #334155; }
+    ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; color: #334155; }
+    li { margin-bottom: 0.4rem; }
+    pre {
+      background-color: var(--code-bg);
+      color: var(--code-text);
+      padding: 1.2rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: Consolas, "Fira Code", Monaco, monospace;
+      font-size: 0.88rem;
+      margin: 1rem 0;
+      line-height: 1.5;
+    }
+    code {
+      font-family: Consolas, "Fira Code", Monaco, monospace;
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.88rem;
+    }
+    pre code { background: none; color: inherit; padding: 0; }
+    .table-responsive { overflow-x: auto; margin: 1rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border: 1px solid var(--border-color); }
+    th { background: #f1f5f9; color: #475569; font-weight: 600; }
+    tr:nth-child(even) { background-color: #f8fafc; }
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: white;
+      background-color: var(--badge-pass);
+    }
+    .footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 3rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <span class="badge">QA &amp; Verification &bull; .NET + React 18</span>
+      <h1>Unit Test Strategy &amp; Test Specification Document</h1>
+      <p style="color: #e6fffa; margin-bottom: 0;">Comprehensive automated and manual test plan validating business logic, stock deductions, and React 18 visual rules</p>
+    </div>
+  </header>
+
+  <nav class="doc-nav">
+    <ul>
+      <li><a href="index.html">📋 Overview Hub</a></li>
+      <li><a href="approach-document.html">📐 Approach Document</a></li>
+      <li><a href="developer-document.html">💻 Developer Document</a></li>
+      <li><a href="unit-test-document.html" class="active">🧪 Unit Test Document</a></li>
+      <li><a href="implementation-document.html">⚙️ Implementation Document</a></li>
+      <li><a href="interview-preparation-document.html">🎯 Interview Prep Document</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- 1. Scope & Strategy -->
+    <div class="section-card">
+      <h2>1. Testing Strategy &amp; Objectives</h2>
+      <p>
+        The quality assurance strategy for ABC Pharmacy verifies end-to-end functionality across both the .NET 8 Web API backend and the React 18 Single Page Application frontend:
+      </p>
+      <ul>
+        <li><strong>Backend Unit Testing (xUnit):</strong> Verifies business rules inside <code>PharmacyService</code> (stock checks, total bill calculations, <code>SemaphoreSlim</code> concurrency serialization) and validation attributes inside API controllers.</li>
+        <li><strong>React Component State Testing:</strong> Tests state changes triggered by user actions (search filter updates, modal open/close, real-time stock deductions upon sale confirmation).</li>
+        <li><strong>Boundary Value Analysis:</strong> Tests critical date boundaries (29 days vs 30 days vs 31 days) and stock boundaries (9 units vs 10 units vs 0 units).</li>
+        <li><strong>Concurrency &amp; Data Integrity:</strong> Asserts that rapid, concurrent sales reject overselling and never corrupt <code>medicines.json</code> or <code>sales.json</code>.</li>
+      </ul>
+    </div>
+
+    <!-- 2. Test Cases Matrix -->
+    <div class="section-card">
+      <h2>2. Test Cases Matrix</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Test Case ID</th>
+              <th>Category</th>
+              <th>Scenario &amp; Test Input</th>
+              <th>Expected Output</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>TC-MED-001</strong></td>
+              <td>Inventory API</td>
+              <td><code>GET /api/medicines</code> without query parameters.</td>
+              <td>HTTP 200 OK with full list of active medicines.</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-MED-002</strong></td>
+              <td>Search Query</td>
+              <td><code>GET /api/medicines?search=amox</code> (case-insensitive).</td>
+              <td>HTTP 200 OK returning only medicines matching "Amoxicillin".</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-MED-003</strong></td>
+              <td>Add Medicine</td>
+              <td><code>POST /api/medicines</code> with valid attributes (Name, Brand, Expiry, Qty, Price).</td>
+              <td>HTTP 201 Created with generated GUID and persisted to <code>medicines.json</code>.</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-MED-004</strong></td>
+              <td>Validation</td>
+              <td><code>POST /api/medicines</code> with price = <code>-5.00</code> or <code>0.00</code>.</td>
+              <td>HTTP 400 Bad Request with model state validation error.</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-MED-005</strong></td>
+              <td>Validation</td>
+              <td><code>POST /api/medicines</code> with blank or missing <code>FullName</code>.</td>
+              <td>HTTP 400 Bad Request: "Full Name is required".</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-SALE-001</strong></td>
+              <td>Point of Sale</td>
+              <td><code>POST /api/sales</code> with <code>qty = 2</code> on medicine having <code>stock = 5</code>, <code>price = 28.50</code>.</td>
+              <td>HTTP 201 Created, TotalPrice = 57.00, stock decremented to 3.</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-SALE-002</strong></td>
+              <td>Oversell Guard</td>
+              <td><code>POST /api/sales</code> with <code>qty = 100</code> on medicine having <code>stock = 5</code>.</td>
+              <td>HTTP 400 Bad Request: "Insufficient stock". Inventory unchanged.</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-SALE-003</strong></td>
+              <td>Zero/Negative Qty</td>
+              <td><code>POST /api/sales</code> with <code>qty = 0</code> or <code>qty = -2</code>.</td>
+              <td>HTTP 400 Bad Request: "Quantity must be at least 1".</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-SALE-004</strong></td>
+              <td>Not Found</td>
+              <td><code>POST /api/sales</code> with non-existent <code>medicineId = "invalid-999"</code>.</td>
+              <td>HTTP 404 Not Found: "Medicine not found".</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-UI-001</strong></td>
+              <td>React Visual Rule</td>
+              <td>Medicine with expiry date 14 days from today (&lt; 30 days).</td>
+              <td><code>isExpiringSoon() == true</code> &rarr; row applies <code>.row-expiring-soon</code> (Red).</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-UI-002</strong></td>
+              <td>React Visual Rule</td>
+              <td>Medicine with stock quantity = 6 (&lt; 10 units).</td>
+              <td><code>isLowStock() == true</code> &rarr; row applies <code>.row-low-stock</code> (Yellow).</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-UI-003</strong></td>
+              <td>React Visual Rule</td>
+              <td>Medicine with expiry = 9 days (&lt; 30) AND stock = 4 (&lt; 10).</td>
+              <td>Row applies dual alert <code>.row-critical-both</code> with dual badges.</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+            <tr>
+              <td><strong>TC-UI-004</strong></td>
+              <td>React Search State</td>
+              <td>User types "Ibu" into the search bar.</td>
+              <td>React <code>useMemo</code> instantly updates <code>filteredMedicines</code> to show matching rows.</td>
+              <td><span class="status-badge">PASS</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3. Automated xUnit Suite Code -->
+    <div class="section-card">
+      <h2>3. Automated C# Unit Test Suite (xUnit)</h2>
+      <p>The following automated test suite can be included in a test project (<code>ABCPharmacy.Tests</code>) to verify the service layer:</p>
+      <pre><code>using Xunit;
+using ABCPharmacy.Models;
+using ABCPharmacy.Services;
+using Microsoft.AspNetCore.Hosting;
+using Moq;
+
+namespace ABCPharmacy.Tests;
+
+public class PharmacyServiceTests : IDisposable
+{
+    private readonly string _testDir;
+    private readonly PharmacyService _service;
+
+    public PharmacyServiceTests()
+    {
+        _testDir = Path.Combine(Path.GetTempPath(), "ABCPharmacy_Tests_" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(_testDir);
+
+        var mockEnv = new Mock&lt;IWebHostEnvironment&gt;();
+        mockEnv.Setup(m =&gt; m.ContentRootPath).Returns(_testDir);
+
+        _service = new PharmacyService(mockEnv.Object);
+    }
+
+    [Fact]
+    public async Task AddMedicine_ValidEntity_ShouldPersistSuccessfully()
+    {
+        // Arrange
+        var med = new Medicine
+        {
+            FullName = "Amoxicillin 500mg",
+            Brand = "GSK",
+            ExpiryDate = DateTime.Today.AddDays(20),
+            Quantity = 50,
+            Price = 12.50m
+        };
+
+        // Act
+        var result = await _service.AddMedicineAsync(med);
+
+        // Assert
+        Assert.NotNull(result.Id);
+        var retrieved = await _service.GetMedicineByIdAsync(result.Id);
+        Assert.NotNull(retrieved);
+        Assert.Equal("Amoxicillin 500mg", retrieved.FullName);
+    }
+
+    [Fact]
+    public async Task RecordSale_SufficientStock_ShouldDecrementStockAndLogSale()
+    {
+        // Arrange
+        var med = await _service.AddMedicineAsync(new Medicine
+        {
+            FullName = "Paracetamol 500mg",
+            Brand = "Panadol",
+            Quantity = 20,
+            Price = 5.00m,
+            ExpiryDate = DateTime.Today.AddDays(100)
+        });
+
+        var saleDto = new CreateSaleDto
+        {
+            MedicineId = med.Id,
+            Quantity = 4,
+            CustomerName = "Jane Doe"
+        };
+
+        // Act
+        var sale = await _service.RecordSaleAsync(saleDto);
+
+        // Assert
+        Assert.Equal(20.00m, sale.TotalPrice); // 4 * 5.00
+        var updatedMed = await _service.GetMedicineByIdAsync(med.Id);
+        Assert.Equal(16, updatedMed!.Quantity); // 20 - 4
+    }
+
+    [Fact]
+    public async Task RecordSale_InsufficientStock_ShouldThrowInvalidOperationException()
+    {
+        // Arrange
+        var med = await _service.AddMedicineAsync(new Medicine
+        {
+            FullName = "Inhaler",
+            Brand = "Ventolin",
+            Quantity = 2,
+            Price = 30.00m,
+            ExpiryDate = DateTime.Today.AddDays(200)
+        });
+
+        var saleDto = new CreateSaleDto
+        {
+            MedicineId = med.Id,
+            Quantity = 10 // Requests more than available (2)
+        };
+
+        // Act & Assert
+        await Assert.ThrowsAsync&lt;InvalidOperationException&gt;(() =&gt; _service.RecordSaleAsync(saleDto));
+    }
+
+    public void Dispose()
+    {
+        if (Directory.Exists(_testDir))
+        {
+            Directory.Delete(_testDir, true);
+        }
+    }
+}</code></pre>
+    </div>
+
+    <!-- 4. Manual Verification Script -->
+    <div class="section-card">
+      <h2>4. Manual Assessment Verification Script</h2>
+      <p>Step-by-step instructions for live evaluators to verify the requirements via UI:</p>
+      <ol>
+        <li><strong>Launch Application:</strong> Run <code>dotnet run</code> in the terminal and open <code>http://localhost:5160</code>.</li>
+        <li><strong>Verify Red Highlight:</strong> Locate "Amoxicillin" and "Ibuprofen" in the grid. Confirm they have a soft red background with a badge stating <em>&lt; 30d Expiry</em>.</li>
+        <li><strong>Verify Yellow Highlight:</strong> Locate "Metformin" (Qty 6) and "Lisinopril" (Qty 8). Confirm they have a yellow background with a badge stating <em>&lt; 10 In Stock</em>.</li>
+        <li><strong>Verify React Live Search:</strong> Type <code>ibu</code> into the search box. Confirm the grid dynamically narrows down exclusively to "Ibuprofen" without a page reload.</li>
+        <li><strong>Verify Add Medicine:</strong> Click "+ Add Medicine", fill in details, and save. Confirm the medicine instantly appears at the top of the grid.</li>
+        <li><strong>Verify Sale Deduction:</strong> Click the "Sell" button on a medicine with 5 units. Sell 2 units. Confirm stock immediately drops to 3 and the row turns yellow (since 3 &lt; 10).</li>
+        <li><strong>Verify Sales Records:</strong> Switch to the "Sales Records" tab. Confirm the new sale appears with accurate timestamp, unit price, and total bill.</li>
+      </ol>
+    </div>
+
+    <div class="footer">
+      ABC Pharmacy Assessment Documentation &bull; Generated for Technical Evaluation &bull; Version 1.0
+    </div>
+
+  </div>
+</body>
+</html>

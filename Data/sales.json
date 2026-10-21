@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sale-001",
+    "medicineId": "med-006",
+    "medicineName": "Paracetamol 500mg Tablets",
+    "brand": "Panadol",
+    "quantity": 2,
+    "unitPrice": 4.50,
+    "totalPrice": 9.00,
+    "saleDate": "2026-10-20T10:08:01.2257481Z",
+    "customerName": "John Doe",
+    "notes": "Walk-in OTC purchase"
+  },
+  {
+    "id": "sale-002",
+    "medicineId": "med-007",
+    "medicineName": "Cetirizine 10mg Film-Coated",
+    "brand": "Zyrtec",
+    "quantity": 1,
+    "unitPrice": 16.80,
+    "totalPrice": 16.80,
+    "saleDate": "2026-10-20T12:08:01.2258723Z",
+    "customerName": "Alice Smith",
+    "notes": "Prescription refill"
+  },
+  {
+    "id": "sale-3860c81f",
+    "medicineId": "14065a4ff0984f03b749fe2a7b9dded4",
+    "medicineName": "Atorvastatin 20mg",
+    "brand": "Lipitor",
+    "quantity": 2,
+    "unitPrice": 28.5,
+    "totalPrice": 57.0,
+    "saleDate": "2026-10-20T14:08:59.3098516Z",
+    "customerName": "Sarah Connor",
+    "notes": "Monthly prescription"
+  },
+  {
+    "id": "sale-3e7aa34b",
+    "medicineId": "med-006",
+    "medicineName": "Paracetamol 500mg Tablets",
+    "brand": "Panadol",
+    "quantity": 50,
+    "unitPrice": 4.50,
+    "totalPrice": 225.00,
+    "saleDate": "2026-10-20T14:21:21.658279Z",
+    "customerName": "Deen Clinic",
+    "notes": "Regular Buyer"
+  }
+]

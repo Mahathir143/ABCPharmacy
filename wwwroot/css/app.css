@@ -1,0 +1,254 @@
+/* ABC Pharmacy - Modern Single Page Application Styles */
+:root {
+  --primary-color: #0f766e;
+  --primary-hover: #115e59;
+  --primary-light: #ccfbf1;
+  --secondary-color: #475569;
+  
+  /* Requirement Color Indications */
+  --row-red-bg: #fee2e2;
+  --row-red-border: #f87171;
+  --row-red-text: #991b1b;
+  --row-red-hover: #fecaca;
+  
+  --row-yellow-bg: #fef3c7;
+  --row-yellow-border: #facc15;
+  --row-yellow-text: #854d0e;
+  --row-yellow-hover: #fde68a;
+  
+  --row-dual-bg: #ffedd5;
+  --row-dual-border: #fb923c;
+  --row-dual-text: #9a3412;
+  --row-dual-hover: #fed7aa;
+}
+
+body {
+  background-color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar-pharmacy {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.brand-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+}
+
+/* Stat Cards */
+.stat-card {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+/* Color Legend */
+.legend-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1rem;
+}
+
+.legend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.legend-red {
+  background-color: var(--row-red-bg);
+  color: var(--row-red-text);
+  border: 1px solid var(--row-red-border);
+}
+
+.legend-yellow {
+  background-color: var(--row-yellow-bg);
+  color: var(--row-yellow-text);
+  border: 1px solid var(--row-yellow-border);
+}
+
+.legend-dual {
+  background-color: var(--row-dual-bg);
+  color: var(--row-dual-text);
+  border: 1px solid var(--row-dual-border);
+}
+
+.legend-normal {
+  background-color: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+/* Grid Table Styling */
+.table-pharmacy {
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-pharmacy thead th {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1rem;
+  border-bottom: 2px solid #cbd5e1;
+  white-space: nowrap;
+}
+
+.table-pharmacy tbody td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* REQUIREMENT COLOR INDICATIONS */
+/* 1. Red background for medicines with expiry date less than 30 days */
+.row-expiring-soon {
+  background-color: var(--row-red-bg) !important;
+  color: var(--row-red-text) !important;
+  font-weight: 500;
+  border-left: 4px solid var(--row-red-border) !important;
+}
+
+.row-expiring-soon:hover td {
+  background-color: var(--row-red-hover) !important;
+}
+
+/* 2. Yellow background for medicines with quantity in stock less than 10 */
+.row-low-stock {
+  background-color: var(--row-yellow-bg) !important;
+  color: var(--row-yellow-text) !important;
+  font-weight: 500;
+  border-left: 4px solid var(--row-yellow-border) !important;
+}
+
+.row-low-stock:hover td {
+  background-color: var(--row-yellow-hover) !important;
+}
+
+/* 3. Combined: both expiry < 30 days AND quantity < 10 */
+.row-critical-both {
+  background-color: var(--row-dual-bg) !important;
+  color: var(--row-dual-text) !important;
+  font-weight: 500;
+  border-left: 4px solid var(--row-dual-border) !important;
+}
+
+.row-critical-both:hover td {
+  background-color: var(--row-dual-hover) !important;
+}
+
+/* 4. Normal row */
+.row-normal {
+  background-color: #ffffff;
+  border-left: 4px solid transparent;
+}
+
+.row-normal:hover td {
+  background-color: #f8fafc;
+}
+
+/* Badges */
+.badge-warning-custom {
+  background-color: #fef08a;
+  color: #713f12;
+  border: 1px solid #fde047;
+}
+
+.badge-danger-custom {
+  background-color: #fecaca;
+  color: #991b1b;
+  border: 1px solid #f87171;
+}
+
+.badge-success-custom {
+  background-color: #bbf7d0;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+/* Price tag */
+.price-tag {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Nav Pills */
+.nav-pills-pharmacy .nav-link {
+  color: #475569;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.nav-pills-pharmacy .nav-link.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(15, 118, 110, 0.25);
+}
+
+/* Toast alert notification */
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1080;
+}
+
+/* Modal styling */
+.modal-header-pharmacy {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  color: white;
+}
+
+.modal-header-pharmacy .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+/* Quick Sell Button */
+.btn-sell {
+  background-color: #0284c7;
+  color: white;
+  border: none;
+}
+
+.btn-sell:hover {
+  background-color: #0369a1;
+  color: white;
+}
